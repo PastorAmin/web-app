@@ -1,12 +1,12 @@
 node {  
-    stage('def mvn-home= tool name: '', type: 'maven')
+    stage('def mvnhome= tool name: '', type: 'maven')
     stage( 'Git-Checkout'){ 
         git branch: 'main', credentialsId: 'git-cred', url: 'https://github.com/PastorAmin/web-app.git'
     }
     stage('clean-compile') { 
-        $(mvn-home)/bin/mvn clean compile
+        sh '$(mvnhome)/bin/mvn clean compile'
     }
     stage('package') { 
-        $(mvn-home)/bin/mvn package
+        sh '$(mvnhome)/bin/mvn package'
     }
 }
